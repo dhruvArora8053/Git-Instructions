@@ -1,0 +1,7 @@
+1. ls
+2. mkdir MyFirstNovel
+3. cd MyFirstNovel
+4. git status
+5. ls -a --> all files hidden or non-hidden
+6. cd ..
+7. rm -rf .git --> delete entire git history of the project

@@ -1,0 +1,2 @@
+1. Do not init a repo inside of a repo! 
+2. Make a folder for a project and then initalize git in that folder
