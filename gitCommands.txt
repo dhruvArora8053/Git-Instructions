@@ -5,3 +5,10 @@
 5. ls -a --> all files hidden or non-hidden
 6. cd ..
 7. rm -rf .git --> delete entire git history of the project
+
+8. touch outline.txt 
+9. git add characters.txt --> Staging
+10. git commit --> Commiting
+11. git commit -m "my message"
+12. git log --> it retrieves the log of the commits for a given repository
+13. git add . --> it will stage all the changesa
