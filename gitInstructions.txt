@@ -1,4 +1,7 @@
 1. Do not init a repo inside of a repo! 
 2. Make a folder for a project and then initalize git in that folder
-3. Woking Area || Staging Area || Repository
+3. Working Area || Staging Area || Repository
     updating        packing         Loading
+
+4. Atomic Commits --> When possible, a commit should encompass a single feature, change, or fix. In other words, try to keep each commit focused on a single thing. This makes it much easier to undo or rollback changes later on. It also makes your code or project easire to review.
+5. Describe your change in present imperative mood, as if you are giving orders to the codebase to change it's behavior.(if you are working individually then no problem but with company use company guidelines)
