@@ -6,19 +6,113 @@ Commiting and Staging Fundamentals:-
 5. ls -a --> all files hidden or non-hidden
 6. cd ..
 7. rm -rf .git --> delete entire git history of the project
+#. rm <fileName> --> delete a file
 8. touch outline.txt 
 9. git add characters.txt --> Staging
 10. git commit --> Commiting
 11. git commit -m "my message"
 12. git log --> it retrieves the log of the commits for a given repository
 13. git add . --> it will stage all the changes
+20. git commit -a -m "<yourMessage>" --> stage and commit altogether
 
 14. git log --oneline --> shows oneline commit messages even it was a long one.
 
-Amending commits
+//Amending commits:-
 15. git commit -m 'some commit'
     git  add forgotten_file
     git commit --amend
 
+//Git Ignore:-
 16. .gitignore -- make a file at the route
     type the files and folders that you want to ignore
+
+//Branches:-
+17. git branch --> shows branches    (little astrix indicates the current branch)
+18. git branch <branchName> --> makes a new branch
+19. git switch <branchName> --> switch to named branch
+21. git checkout <branchName> --> switch to named branch
+22. git switch -c <branchName> --> create + switch to the branch
+23. git checkout -b <branchName> --> create + switch to the branch
+24. git branch -D deleteMe --> deleting the branch (uppercase D means forced)
+25. git branch -m 2000s --> renaming the branch
+26. cat .git/HEAD --> to check the reference --> ex: cat .git/HEAD
+                                                 ref: refs/heads/oldies
+27. git branch -v --> show all branches with commit information
+
+//Merge:
+28. 1st Case: When just moving forward one branch = git merge <branchName> -->  moving forward with the "master" branch
+                                         HEAD -> master - A - B - C
+                                         HEAD -> bugFix - C - D - E - F 
+
+                                         come back to the parent branch in which you want to merge the another branch and run the command:
+                                         --> git merge bugFix
+                                         Now: HEAD -> master - A - B - C - D - E - F
+
+    2nd Case: When there is no conflict but changes --> adding new commits to "master" then merging another branch
+                                         HEAD -> master - A - B - C - D
+                                         HEAD -> bugFix - C - E - F 
+
+                                         come back to the parent branch in which you want to merge the another branch and run the command:
+                                         --> git merge bugFix
+                                         then git by default will do the commit and then will merge it
+                                         Now: HEAD -> master - A - B - C - D - E - F
+
+    3rd Case: When there is a conflict --> change in both branches at the same lines of a file or one branch deleted that file and other one is adding that same file after merege etc.
+                                         a. open up the file with merge conflicts
+                                         b. edit the file to remove the conflicts
+                                         c. remove the conflict "markers" in the document
+                                         d. add your changes then make a commit
+
+//Diffing:- comparisons
+29. git diff --> it shows only unstage changes
+    git diff HEAD --> it shows everything that has changed since our last commit(where HEAD is pointing), whether it's staged or unstaged
+    git diff --staged --> it shows only staged changes since our last commit, only staged 
+    git diff --cached --> same as above
+
+    if I want to see the changes for a specific file:
+    git diff HEAD <fileName1>
+    git diff HEAD <fileName1 fileName2>
+    git diff --staged <fileName1>  and etc.
+
+    if I want to see the changes between 2 branches:
+    git diff <branchName1>..<brnachName2>  (you can also use space instead of ..)
+
+    if I want to see the changes between 2 commits:
+    git diff <commit1>..<commit2>
+
+//Stashing:-   
+30. git stash/git stash save --> will stash the changes(save the changes)
+    git stash pop --> will bring back the changes(changes are removed from the stash after they're applied)
+    git stash apply --> will bring back the changes(changes are not removed from the stash)
+    git stash list --> will show all the stash list
+    git stash apply stash@{2} --> will bring back the referenced change
+    git stash drop stash@{0} --> deleting from the stash
+    git stash clear --> deleting all the stash
+
+//Checking out Old Commits:-
+31. Did nothing, looked back and went to the branch again:-
+    git checkout <commit-hash> --> now HEAD will point to that particular commit address, not to the branch
+    git checkout <branchName>/git switch <branchName> --> now the HEAD will point to that branch again(noting changed)
+
+    Want to do someting, travelled back and made a new branch from there:-
+    git checkout <commit-hash>
+    git switch -c <branchName> --> and just like anytime we make a branch, that branch is based upon HEAD
+
+32. Checking out previous commit or previous previous commit and so on... :-
+    git checkout HEAD~<priorCommitNumber>
+
+    Getting back from detach HEAD to the current branch:-
+    git checkout -
+
+33. Discarding Changes:-
+    git checkout HEAD <fileName> --> it will dicard all the changes of that particular file after the HEAD pointing to the branch
+    alter: git checkout -- <fileName1> <fileName2>
+
+    git restore <fileName> --> same as above
+    git restore --source HEAD~<priorCommitNumber> --> it will discard all the changes that you did and you will lose  all the unstage changes which you haven't commited yet and will go back to that priorCommitNumber Note:- the head will not be detached, it will still stay on the branch but the information will be implemented of priorCommitNumber
+    git restore --staged <fileName> --> to unstage the file
+
+    git reset <commit-hash> --> will reset the repo back to a specific commit. The later commits info is gone to unstage area
+    git reset --hard <commit-hash> --> will reset the repo back to a specific commit. The later commits are completely gone
+
+    git revert <commit-hash> --> remove the particular commit + commit once again so that other collborators know what you have delted
