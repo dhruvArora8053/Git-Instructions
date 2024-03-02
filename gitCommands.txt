@@ -6,6 +6,7 @@ Commiting and Staging Fundamentals:-
 5. ls -a --> all files hidden or non-hidden
 6. cd ..
 7. rm -rf .git --> delete entire git history of the project
+#. rm -rf --> to delete a folder
 #. rm <fileName> --> delete a file
 8. touch outline.txt 
 9. git add characters.txt --> Staging
@@ -116,3 +117,27 @@ Commiting and Staging Fundamentals:-
     git reset --hard <commit-hash> --> will reset the repo back to a specific commit. The later commits are completely gone
 
     git revert <commit-hash> --> remove the particular commit + commit once again so that other collborators know what you have delted
+
+34. Github the basics:-
+    git clone <repoLink>  --> will intialise the repo on your system.
+    git remote -v --> it gives the link of the repo
+    git remote rename <oldName> <newName> --> to rename the remote(default remote name - origin)
+    git remote remove <Name> --> to delete the remote
+
+    // pushing:
+    git remote add origin <repoLink> --> it will connect the github repo link to your system repo 
+    git push <remote> <branchName> --> it will push your content to the <branchName> branch
+    git push -u <remote> <branchName> --> setting up the upstream so the next time you only have to use 'git push'
+
+    git push <remote> <local-branch>:<remote-branch> --> git push origin pancake:waffle
+
+35. Fetching and Pulling:-
+    git branch -r --> to checkout the remote tracking on a branch
+    git checkout <remote>/<branchName> --> it will go back where the last time your computer communicated with the remote
+    git branch -r --> it shows all the branches using remote tracking
+
+    git fetch origin --> will bring all the changes from remote to your local repo but they will not be integrated to your workspace
+    git fetch origin <branchName> --> to fetch a particular branch
+    
+    git pull <remote> <branchName> --> will bring all the changes from remote to your local repo and update it to the given branch
+    git pull --> will update current workspace branch with that origin/branch
