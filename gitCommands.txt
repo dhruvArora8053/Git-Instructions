@@ -1,4 +1,5 @@
 Commiting and Staging Fundamentals:-
+#. code . --> to open your editor
 1. ls
 2. mkdir MyFirstNovel
 3. cd MyFirstNovel
@@ -9,6 +10,7 @@ Commiting and Staging Fundamentals:-
 #. rm -rf --> to delete a folder
 #. rm <fileName> --> delete a file
 8. touch outline.txt 
+#. cat <flieName> --> to view inside of a file
 9. git add characters.txt --> Staging
 10. git commit --> Commiting
 11. git commit -m "my message"
@@ -141,3 +143,68 @@ Commiting and Staging Fundamentals:-
     
     git pull <remote> <branchName> --> will bring all the changes from remote to your local repo and update it to the given branch
     git pull --> will update current workspace branch with that origin/branch
+
+36. Fork:-
+    git remote add upstream <repoLink> --> it will set the original repo as another remote so that whenever update happens you could pull them
+    git pull upstream <branchName> --> to pull the new updates to your local workspace from the original repo
+
+37. Rebase:-
+    git rebase <branchName> --> 
+    it will make a linear structure, by adding the typed branch first to the current branch (Warning! - Never rebase commits that have been shared with others. If you have already pushed commits up to Github.. Do Not rebase them unless you are positive on one on the team is using those commits. You do not want to rewrite any git history that other people already have. It's a pain to reconcile the alternate histories!)
+
+    git rebase --continue --> if conflict happens, solve the conflicts and run this command to complete the rebase process
+
+    git rebase -i HEAD~<commitNumber> --> editing the commited commits like:
+                                          pick - use the commit
+                                          reword - use the commit, but edit the commit message
+                                          edit - use commit, but stop of amending
+                                          fixup - use commit contents but meld it into previous commit and discard the commit message
+                                          drop - remove commit  
+
+38. Tags:-
+    git tag --> to list all the tags 
+    git tag -l --> to list all the tags explicitly
+    git tag -l <pattern>("v1*" || "*beta*") --> to list all particular tags that starts with something
+
+    git checkout <tagName> --> to go back in time where that tag was commited and if you want to make a new branch from there you can make it  
+    
+    git diff <tagName1> <tagName2> --> to compare between 2 tags
+
+    git tag <yourTagName> --> to create a new tag, this tag will get assigned to where HEAD is pointing which is normally points to the current branch and current branch points to the last commit
+
+    git tag -a <yourTagName> --> to create a tagname with a message(will open a new file in editor)
+    git tag -m <yourTagName> --> will not open a new file, just write whatever you want using quotes
+    git show <tagName> --> to see the information about a particular tag
+    
+    git tag <yourTagName> <commitHash> --> to assign a tag on the previous commit
+    git tag <existedTagName> <commitHash> -f --> to move already assigned tagname to other commit
+    
+    git tag -d <tagName> --> to delete a tag  
+
+    git push <remote> <tagName> --> to push a tag on github
+    git push <remote> --tags --> to push all the tags on github
+
+39. Reflog:-(it's local and not permanent)
+    git reflog show HEAD --> it will show all the history of your git repository relate to HEAD(like switching, cloning, commiting etc.)
+    git reflog show <branchName> --> it will show all the history of typed branch
+
+    git diff master master@{yesterday} --> 
+    git reflog show HEAD@{2.days.ago}
+    git reflog show HEAD@{one.minute.ago}
+    git checkout master@{one.week.ago}
+
+    git reset --hard <commitHash> --> we will lose all the work and our repo will reset to the type commitHash
+    now to the rescue:-
+    git reflog show master
+    git reset --hard master@{1}
+
+40. Writing Custom Git Aliases:-
+    git config --global user.name --> show username(next word to set up inside "")
+    git config --global user.email --> show email(next word to set up inside "")
+
+    cat ~/.gitconfig --> shows hidden config file at home directory, stores information about the developer
+    git config --global alias.showmebranches branch -> configuring names(adding aliases)
+
+
+
+
