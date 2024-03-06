@@ -10,13 +10,13 @@ Commiting and Staging Fundamentals:-
 #. rm -rf --> to delete a folder
 #. rm <fileName> --> delete a file
 8. touch outline.txt 
-#. cat <flieName> --> to view inside of a file
+#. cat <flieName> --> to read a file
 9. git add characters.txt --> Staging
 10. git commit --> Commiting
 11. git commit -m "my message"
 12. git log --> it retrieves the log of the commits for a given repository
 13. git add . --> it will stage all the changes
-20. git commit -a -m "<yourMessage>" --> stage and commit altogether
+20. git commit -am "<yourMessage>" --> stage and commit altogether
 
 14. git log --oneline --> shows oneline commit messages even it was a long one.
 
@@ -74,11 +74,11 @@ Commiting and Staging Fundamentals:-
 
     if I want to see the changes for a specific file:
     git diff HEAD <fileName1>
-    git diff HEAD <fileName1 fileName2>
+    git diff HEAD <fileName1> <fileName2>
     git diff --staged <fileName1>  and etc.
 
     if I want to see the changes between 2 branches:
-    git diff <branchName1>..<brnachName2>  (you can also use space instead of ..)
+    git diff <branchName1>..<branchName2>  (you can also use space instead of ..)
 
     if I want to see the changes between 2 commits:
     git diff <commit1>..<commit2>
@@ -95,7 +95,7 @@ Commiting and Staging Fundamentals:-
 //Checking out Old Commits:-
 31. Did nothing, looked back and went to the branch again:-
     git checkout <commit-hash> --> now HEAD will point to that particular commit address, not to the branch
-    git checkout <branchName>/git switch <branchName> --> now the HEAD will point to that branch again(noting changed)
+    git checkout <branchName>/git switch <branchName> --> now the HEAD will point to that branch again(nothing changed)
 
     Want to do someting, travelled back and made a new branch from there:-
     git checkout <commit-hash>
@@ -204,7 +204,3 @@ Commiting and Staging Fundamentals:-
 
     cat ~/.gitconfig --> shows hidden config file at home directory, stores information about the developer
     git config --global alias.showmebranches branch -> configuring names(adding aliases)
-
-
-
-
